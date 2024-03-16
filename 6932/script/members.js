@@ -178,13 +178,6 @@ function displayUsers() {
             arrowIcon = "";
           }
 
-          console.log(
-            new Date(
-              `${new Date().getMonth() + 1}-05-${new Date()
-                .toLocaleString()
-                .slice(6, 10)}`
-            )
-          );
           function add() {
             cardsHTML += `
                             <div class="${cardClass}" data-user-id="${userId}">
@@ -295,8 +288,27 @@ function displayUsers() {
       });
     }
   });
+  const currentDate = new Date();
+const currentDay = currentDate.getDate();
+  if (currentDay > 5) {
+    // Change color of elements with class 'not-user' to green
+    const elements = document.getElementsByClassName("not-user");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].style.color = "rgb(244, 1, 1)";
+      elements[i].style.border = "rgb(244, 1, 1) solid 1px";
+    }
+    const elements_ = document.getElementsByClassName("y");
+    for (let i = 0; i < elements_.length; i++) {
+      elements_[i].style.color = "rgb(244, 1, 1)";
+      elements_[i].style.border = "rgb(244, 1, 1) solid 1px";
+    }
+  }
 }
 
 // Call the function to display users
 displayUsers();
-export let a = $(".y").length;
+
+
+
+
+// Log "dd" at the end
