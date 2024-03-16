@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontline Sport</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jura:wght@300..700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/core/main.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/daygrid/main.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <style>
+      /* Dark mode styles */
+      body {
+        position: relative;
+        background-color: #121212;
+        font-family: "Jura", sans-serif;
+        color: #fff;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("IMG_2970.JPG");
+        position: fixed;
+        background-size: 100% auto; /* Fill width, auto adjust height */
+        background-position: center;
+        filter: brightness(50%); /* Adjust the brightness level as needed */
+        z-index: -1;
+      }
+      .btn-dark {
+        background-color: #343a40;
+        border-color: #343a40;
+      }
+      .r {
+        font-family: "Bebas Neue", cursive;
+      }
+      .training-card {
+        background-color: #212121;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        cursor: pointer; /* Change cursor to pointer for clickable effect */
+      }
+      .training-card:hover {
+        background-color: #343a40; /* Change background color on hover */
+      }
+      /* Dark mode for inputs and date-time selectors */
+      .form-control,
+      input[type="date"],
+      input[type="time"] {
+        background-color: #2e2e2e;
+        border-color: #444;
+        color: #fff;
+      }
+      /* Customizing the modal styles */
+
+      .modal-body {
+        color: white;
+        background: #121212;
+      }
+      .modal-header {
+        color: white;
+        background: #121212;
+      }
+
+      .dark {
+        color: grey;
+        background-color: #232323;
+      }
+      /* Align arrows to the right */
+      .arrow {
+        float: right;
+      }
+      /* Customize arrow color */
+      .arrow i {
+        color: white;
+      }
+
+      .btn-close.btn-close-white:focus {
+        border: none;
+      }
+
+      .free-user {
+        color: rgb(130, 255, 47);
+      }
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        color: white;
+      }
+      .modal-header {
+        border-bottom: none;
+      }
+
+      .not-user {
+        color: red;
+        border: red solid 1px;
+      }
+      .not-user i {
+        color: red;
+      }
+
+      .y {
+        color: rgb(255, 221, 0);
+        border: rgb(255, 221, 0) solid 1px;
+      }
+      .y i {
+        color: rgb(255, 221, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="back-button">
+        <button
+          id="backButton"
+          class="btn btn-secondary"
+          style="position: absolute; top: 20px; left: 20px"
+          onclick="window.location.href = 'dashboard.html'"
+        >
+          <i class="bi bi-arrow-bar-left"></i>
+        </button>
+      </div>
+      <h1 class="text-center r">Kickbox</h1>
+      <div class="container py-5">
+        <div style="margin: 0 auto; width: 50%">
+          <div id="trainingList" class="trainingList">
+            <!-- User cards will be inserted here -->
+          </div>
+          <br />
+          <!-- Save button -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for user data -->
+    <div
+      class="modal fade"
+      id="userDataModal"
+      tabindex="-1"
+      aria-labelledby="darkModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userDataModalLabel">Информация</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- User data will be displayed here -->
+            <div id="userDataContent"></div>
+            <!-- Month list and pay buttons -->
+            <div id="paymentHistory" class="mt-4">
+              <div class="dropdown" data-bs-theme="dark">
+                <div class="d-flex">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButtonDark"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="margin: 0 auto"
+                  >
+                    Оплата за
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButtonDark"
+                    id="paymentDropdownMenu"
+                  >
+                    <!-- Month options will be inserted here -->
+                  </ul>
+                </div>
+              </div>
+              <br />
+              <h6 class="text-center mb-3">История оплат</h6>
+              <!-- Payment history table -->
+              <table class="table table-dark mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Месяц</th>
+                    <th scope="col">Дата</th>
+                  </tr>
+                </thead>
+                <tbody id="paymentTableBody">
+                  <!-- Payment history rows will be inserted here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="script/members.js" defer></script>
+  </body>
+</html>
