@@ -187,11 +187,10 @@
           </div>
           <div class="modal-body">
             <!-- User data will be displayed here -->
-            <div id="userDataContent"></div>
-            <!-- Month list and pay buttons -->
-            <div id="paymentHistory" class="mt-4">
-              <div class="dropdown" data-bs-theme="dark">
-                <div class="d-flex">
+            <div style="display: flex; justify-content: space-between;">
+              <div id="userDataContent" style="flex-grow: 0;"></div>
+              <div class="dropdown" data-bs-theme="dark" >
+       
                   <button
                     class="btn btn-secondary dropdown-toggle"
                     type="button"
@@ -209,8 +208,13 @@
                   >
                     <!-- Month options will be inserted here -->
                   </ul>
-                </div>
+          
               </div>
+            </div>
+            
+            <!-- Month list and pay buttons -->
+            <div id="paymentHistory" class="mt-4">
+              
               <br />
               <h6 class="text-center mb-3">История оплат</h6>
               <!-- Payment history table -->

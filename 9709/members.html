@@ -64,6 +64,7 @@
       .training-card {
         background-color: #212121;
         padding: 15px;
+        width: 100%;
         border-radius: 10px;
         margin-bottom: 10px;
         cursor: pointer; /* Change cursor to pointer for clickable effect */
@@ -136,6 +137,9 @@
       .y i {
         color: yellow;
       }
+      .trainingList {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -151,8 +155,8 @@
         </button>
       </div>
       <h1 class="text-center r">Kickbox</h1>
-      <div class="container py-5">
-        <div style="margin: 0 auto; width: 50%">
+      <div class="container py-5" style="width: 100%;">
+        <div style="margin: 0 auto; width: 90%;">
           <div id="trainingList" class="trainingList">
             <!-- User cards will be inserted here -->
           </div>
@@ -170,61 +174,65 @@
       aria-labelledby="darkModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="userDataModalLabel">Информация</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- User data will be displayed here -->
-            <div id="userDataContent"></div>
-            <!-- Month list and pay buttons -->
-            <div id="paymentHistory" class="mt-4">
-              <div class="dropdown" data-bs-theme="dark">
-                <div class="d-flex">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButtonDark"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    style="margin: 0 auto"
-                  >
-                    Оплата за
-                  </button>
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButtonDark"
-                    id="paymentDropdownMenu"
-                  >
-                    <!-- Month options will be inserted here -->
-                  </ul>
-                </div>
-              </div>
-              <br />
-              <h6 class="text-center mb-3">История оплат</h6>
-              <!-- Payment history table -->
-              <table class="table table-dark mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">Месяц</th>
-                    <th scope="col">Дата</th>
-                  </tr>
-                </thead>
-                <tbody id="paymentTableBody">
-                  <!-- Payment history rows will be inserted here -->
-                </tbody>
-              </table>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userDataModalLabel">Информация</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <!-- User data will be displayed here -->
+          <div style="display: flex; justify-content: space-between;">
+            <div id="userDataContent" style="flex-grow: 0;"></div>
+            <div class="dropdown" data-bs-theme="dark" >
+     
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButtonDark"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="margin: 0 auto"
+                >
+                  Оплата за
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButtonDark"
+                  id="paymentDropdownMenu"
+                >
+                  <!-- Month options will be inserted here -->
+                </ul>
+        
             </div>
+          </div>
+          
+          <!-- Month list and pay buttons -->
+          <div id="paymentHistory" class="mt-4">
+            
+            <br />
+            <h6 class="text-center mb-3">История оплат</h6>
+            <!-- Payment history table -->
+            <table class="table table-dark mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Месяц</th>
+                  <th scope="col">Дата</th>
+                </tr>
+              </thead>
+              <tbody id="paymentTableBody">
+                <!-- Payment history rows will be inserted here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     <script
