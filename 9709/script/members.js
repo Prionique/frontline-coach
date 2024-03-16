@@ -111,6 +111,10 @@ const currentDay = currentDate.getDate();
       elements_[i].style.color = "rgb(244, 1, 1)";
       elements_[i].style.border = "rgb(244, 1, 1) solid 1px";
     }
+    const arrowIcon = elements[i].querySelector(".arrow i");
+        if (arrowIcon) {
+            arrowIcon.style.color = "rgb(244, 1, 1)";
+        }
   }
 }
 
