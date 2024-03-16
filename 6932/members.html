@@ -64,6 +64,7 @@
       .training-card {
         background-color: #212121;
         padding: 15px;
+        width: 100%;
         border-radius: 10px;
         margin-bottom: 10px;
         cursor: pointer; /* Change cursor to pointer for clickable effect */
@@ -136,6 +137,9 @@
       .y i {
         color: yellow;
       }
+      .trainingList {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -151,8 +155,8 @@
         </button>
       </div>
       <h1 class="text-center r">MMA</h1>
-      <div class="container py-5">
-        <div style="margin: 0 auto; width: 50%">
+      <div class="container py-5" style="width: 100%;">
+        <div style="margin: 0 auto; width: 90%;">
           <div id="trainingList" class="trainingList">
             <!-- User cards will be inserted here -->
           </div>
