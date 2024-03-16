@@ -130,11 +130,11 @@
       }
 
       .y {
-        color: red;
-        border: red solid 1px;
+        color: yellow;
+        border: yellow solid 1px;
       }
       .y i {
-        color: red;
+        color: yellow;
       }
     </style>
   </head>
@@ -150,7 +150,7 @@
           <i class="bi bi-arrow-bar-left"></i>
         </button>
       </div>
-      <h1 class="text-center r">Kickbox</h1>
+      <h1 class="text-center r">MMA</h1>
       <div class="container py-5">
         <div style="margin: 0 auto; width: 50%">
           <div id="trainingList" class="trainingList">
@@ -235,3 +235,19 @@
     <script type="module" src="script/members.js" defer></script>
   </body>
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate();
+
+        // Check if current day is after the 5th
+        if (currentDay > 5) {
+          // Change color of elements with class 'y' to red
+          const elements = document.getElementsByClassName("y");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].classList.add("not-user");
+            elements[i].classList.remove("y");
+          }
+        }
+      });
+</script>

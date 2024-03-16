@@ -158,5 +158,4 @@ function paid() {
   });
 }
 
-// Call the paid() function when the page loads
 document.addEventListener("DOMContentLoaded", paid);
