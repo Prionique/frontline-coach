@@ -256,6 +256,10 @@
         elements[i].style.color = "red";
         elements[i].style.border = "red solid 1px";
       }
+      const icons = elements[i].getElementsByClassName("card")[0].getElementsByTagName("i");
+            for (let j = 0; j < icons.length; j++) {
+                icons[j].style.color = "red";
+            }
     }
   });
 </script>
